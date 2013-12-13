@@ -1,0 +1,12 @@
+# to unbundle ,bash this file
+echo f1 1>&2
+cat > f1 <<'End of f1'
+this is a file
+it contains 2 lines
+End of f1
+echo f2 1>&2
+cat > f2 <<'End of f2'
+this is a file 
+it contains 
+three lines
+End of f2

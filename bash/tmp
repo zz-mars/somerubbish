@@ -1,0 +1,42 @@
+		;;
+		;;
+		;;
+	0)
+	1)
+	2)
+#!/bin/bash
+case $# in
+cp $editfile $tmpfile
+			echo "$script : backup file cannot be created!" 1>&2
+		echo "$script : backup file created!"
+			echo "$script :check permission on $1" 1>&2
+		echo "$script : edit error!copy of original file is in the editerr" 1>&2
+echo "script -- $script"
+		echo "Usage : $script [file-to-edit]" 1>&2
+echo "what ?? -- $$"
+			editfile=$1
+	else
+		else
+esac
+			exit 0
+		exit 0
+exit 0
+			exit 1
+			exit 1
+		exit 1
+fi
+		fi
+		fi
+		fi
+		if [ ! -f "$1" ] ;then
+		if [ ! -r "$1" -o ! -w "$1" ] ;then
+if vim $editfile
+		if [ ! -w "." ] ;then
+		mv $tmpfile bak.$(basename $editfile)
+		mv $tmpfile editerr
+PATH=/usr/bin : /bin
+script=$(basename $0)
+	then
+tmpfile=/tmp/$$.$script
+		vim
+			vim "$1"

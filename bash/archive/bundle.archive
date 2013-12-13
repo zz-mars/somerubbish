@@ -1,0 +1,378 @@
+# to unbundle ,bash this file
+# arg -- archive b birthday.sh bothfiles bundle.sh case1.sh ckarg.sh count.sh file.sh for_t.sh fruit1.sh fruit.sh if1.sh lks.sh locky.sh mkexec.sh safedit.sh whos.sh
+if [ $# -eq 0 -o "$1" = b ] ;then
+echo b 1>&2
+cat > b <<'End of b'
+# to unbundle ,bash this file
+if [ $# -eq 0 -o "$1" = f1 ] ;then
+echo f1 1>&2
+cat > f1 <<'End of f1'
+this is a file
+it contains 2 lines
+End of f1
+fi
+if [ $# -eq 0 -o "$1" = f2 ] ;then
+echo f2 1>&2
+cat > f2 <<'End of f2'
+this is a file 
+it contains 
+three lines
+End of f2
+fi
+End of b
+fi
+if [ $# -eq 0 -o "$1" = birthday.sh ] ;then
+echo birthday.sh 1>&2
+cat > birthday.sh <<'End of birthday.sh'
+#!/bin/bash
+grep -i $1 <<+
+Max June 22
+Barbara February 3
+zz November 14
+Declen December 5
+Zack January 23
+Nancy August 2
++
+End of birthday.sh
+fi
+if [ $# -eq 0 -o "$1" = bothfiles ] ;then
+echo bothfiles 1>&2
+cat > bothfiles <<'End of bothfiles'
+# to unbundle ,bash this file
+echo f1 1>&2
+cat > f1 <<'End of f1'
+this is a file
+it contains 2 lines
+End of f1
+echo f2 1>&2
+cat > f2 <<'End of f2'
+this is a file 
+it contains 
+three lines
+End of f2
+End of bothfiles
+fi
+if [ $# -eq 0 -o "$1" = bundle.sh ] ;then
+echo bundle.sh 1>&2
+cat > bundle.sh <<'End of bundle.sh'
+#!/bin/bash
+echo "# to unbundle ,bash this file"
+if [ $# -eq 0 ] ;then
+	set -- $(ls)
+fi
+echo "# arg -- $@"
+for i
+do
+	if [ ! -d "$i" ] ;then
+		echo "if [ \$# -eq 0 -o \"\$1\" = "$i" ] ;then"
+		echo "echo $i 1>&2"
+		echo "cat > $i <<'End of $i'"
+		cat $i
+		echo "End of $i"
+		echo "fi"
+	fi
+done
+exit 0
+End of bundle.sh
+fi
+if [ $# -eq 0 -o "$1" = case1.sh ] ;then
+echo case1.sh 1>&2
+cat > case1.sh <<'End of case1.sh'
+#!/bin/bash
+echo -n "enter A B C D : "
+read letter
+case "$letter" in
+	A|a)
+		echo "input A"
+		;;
+	B|b)
+		echo "input B"
+		;;
+	C|c)
+		echo "input C"
+		;;
+	D|d)
+		echo "input D"
+		;;
+	[A-Z])
+		echo "input capital letter"
+		;;
+	*)
+		echo "no A | B | C | D is input!"
+		;;
+esac
+exit 0
+End of case1.sh
+fi
+if [ $# -eq 0 -o "$1" = ckarg.sh ] ;then
+echo ckarg.sh 1>&2
+cat > ckarg.sh <<'End of ckarg.sh'
+#!/bin/bash
+if [ $# -eq 0 ]
+	then
+		echo "no arguments!"
+		echo "Usage : out [-v] filenames ..." 1>&2
+		exit 1
+fi
+echo "running"
+if [ "$1" = "-v" ] ;then
+		shift
+		less -- "$1"
+	else
+		cat -- "$1"
+fi
+if [ -f "$1" ]
+	then
+		echo "$1 is an ordinary file in current dir"
+	else
+		echo "$1 is not an ordinary file in current dir"
+fi
+exit 0
+End of ckarg.sh
+fi
+if [ $# -eq 0 -o "$1" = count.sh ] ;then
+echo count.sh 1>&2
+cat > count.sh <<'End of count.sh'
+#!/bin/bash
+num=0
+while [ "$num" -lt 10 ]
+	do
+		echo -n "$num"
+		((num += 1))
+	done
+echo
+exit 0
+End of count.sh
+fi
+if [ $# -eq 0 -o "$1" = file.sh ] ;then
+echo file.sh 1>&2
+cat > file.sh <<'End of file.sh'
+#!/bin/bash
+for file in *
+do
+	if [ -f "$file" ] ;then
+		echo "$file is regular file!"
+	fi
+done
+exit 0
+End of file.sh
+fi
+if [ $# -eq 0 -o "$1" = for_t.sh ] ;then
+echo for_t.sh 1>&2
+cat > for_t.sh <<'End of for_t.sh'
+#!/bin/bash
+set -x
+for zarg
+do
+	echo "$zarg "
+done
+for arg in "$@"
+do
+	echo "$arg"
+done
+exit 0
+End of for_t.sh
+fi
+if [ $# -eq 0 -o "$1" = fruit1.sh ] ;then
+echo fruit1.sh 1>&2
+cat > fruit1.sh <<'End of fruit1.sh'
+#!/bin/bash
+PS3="choose your favourite fruit : "
+select fruit in apple banana blueberry kiwi orange watermelon STOP
+do
+	if [ "$fruit" = "" ] ;then
+		echo "Invalid choice"
+		continue
+	elif [ "$fruit" = STOP ] ;then
+		echo "thanks for playing!"
+		break
+	fi
+	echo "you choose $fruit as your favourite fruit!"
+	echo "num you choose is $REPLY"
+done
+
+End of fruit1.sh
+fi
+if [ $# -eq 0 -o "$1" = fruit.sh ] ;then
+echo fruit.sh 1>&2
+cat > fruit.sh <<'End of fruit.sh'
+#!/bin/bash
+for fruit in apple banana pear orange
+do
+	echo "$fruit"
+done
+echo "Task complete!"
+exit 0
+End of fruit.sh
+fi
+if [ $# -eq 0 -o "$1" = if1.sh ] ;then
+echo if1.sh 1>&2
+cat > if1.sh <<'End of if1.sh'
+#!/bin/bash
+echo -n "word 1:"
+read word1
+echo -n "word 2:"
+read word2
+echo -n "word 3:"
+read word3
+echo "Your input : "
+echo "word1 : $word1"
+echo "word2 : $word2"
+echo "word3 : $word3"
+if [ "$word1" = "$word2" -a "$word2" = "$word3" ] ;then
+	echo "Match 1 2 3"
+	elif [ "$word1" = "$word2" ] ;then
+		echo "Match 1 2"
+	elif [ "$word2" = "$word3" ] ;then
+		echo "Match 2 3"
+	elif [ "$word1" = "$word3" ] ;then
+		echo "Match 1 3"
+	else echo "NO MATCH"
+fi
+echo "End of program"
+exit 0
+End of if1.sh
+fi
+if [ $# -eq 0 -o "$1" = lks.sh ] ;then
+echo lks.sh 1>&2
+cat > lks.sh <<'End of lks.sh'
+#!/bin/bash
+set +x
+if [ $# -eq 0 -o $# -gt 2 ] ;then
+	echo "Usage : link lks file [directory]" 1>&2
+	exit 1
+fi
+if [ -d "$1" ] ;then
+	echo "file cannot be a directory!"
+	exit 1
+fi
+file="$1"
+if [ $# -eq 1 ] ;then
+		dir="."
+	elif [ -d $2 ] ;then
+		dir="$2"
+	else
+		echo "optional second argument must be a directory" 1>&2
+		echo "Usage : link lks file [directory]" 1>&2
+		exit 1
+fi
+if [ ! -f "$file" ] ;then
+	echo "not a regular file"
+	exit 1
+fi
+set -- $(ls -l "$file")
+lkcount=$2
+if [ "$lkcount" -eq 1 ] ;then
+	echo "only one reference to this inode"
+	exit 1
+fi
+set -- $(ls -i "$file")
+inode=$1
+echo "using find to search for files hard-linked to the given file"
+find "$dir" -xdev -inum "$inode" -print
+exit 0
+	
+End of lks.sh
+fi
+if [ $# -eq 0 -o "$1" = locky.sh ] ;then
+echo locky.sh 1>&2
+cat > locky.sh <<'End of locky.sh'
+#!/bin/bash
+trap '' 1 2 3 18
+stty -echo
+echo -n "KEY : "
+read k1
+echo
+echo -n "Again : "
+read k2
+echo
+k3=
+if [ "$k1" = "$k2" ] ;then
+	tput clear
+	until [ "$k3" = "$k2" ]
+	do
+		read k3
+	done
+	else
+		echo "locktty : keys do not match!" 1>&2
+fi
+stty echo
+exit 0
+End of locky.sh
+fi
+if [ $# -eq 0 -o "$1" = mkexec.sh ] ;then
+echo mkexec.sh 1>&2
+cat > mkexec.sh <<'End of mkexec.sh'
+#!/bin/bash
+if [ ! $# -eq 1 ] ;then
+	echo "Usage : mkexec [file]"
+	exit 1
+fi
+file="$1"
+chmod +x "$file"
+exit 0
+End of mkexec.sh
+fi
+if [ $# -eq 0 -o "$1" = safedit.sh ] ;then
+echo safedit.sh 1>&2
+cat > safedit.sh <<'End of safedit.sh'
+#!/bin/bash
+PATH=/usr/bin : /bin
+script=$(basename $0)
+echo "script -- $script"
+echo "what ?? -- $$"
+case $# in
+	0)
+		vim
+		exit 0
+		;;
+	1)
+		if [ ! -f "$1" ] ;then
+			vim "$1"
+			exit 0
+		fi
+		if [ ! -r "$1" -o ! -w "$1" ] ;then
+			echo "$script :check permission on $1" 1>&2
+			exit 1
+		else
+			editfile=$1
+		fi
+		if [ ! -w "." ] ;then
+			echo "$script : backup file cannot be created!" 1>&2
+			exit 1
+		fi
+		;;
+	2)
+		echo "Usage : $script [file-to-edit]" 1>&2
+		exit 1
+		;;
+esac
+tmpfile=/tmp/$$.$script
+cp $editfile $tmpfile
+if vim $editfile
+	then
+		mv $tmpfile bak.$(basename $editfile)
+		echo "$script : backup file created!"
+	else
+		mv $tmpfile editerr
+		echo "$script : edit error!copy of original file is in the editerr" 1>&2
+fi
+exit 0
+End of safedit.sh
+fi
+if [ $# -eq 0 -o "$1" = whos.sh ] ;then
+echo whos.sh 1>&2
+cat > whos.sh <<'End of whos.sh'
+#!/bin/bash
+set -x
+if [ $# -eq 0 ] ;then
+	echo "Usage whos.sh user_name .." 1>&2
+	exit 1
+fi
+for id
+do
+	awk -F : '{print $1,$5}' /etc/passwd | grep "$id"
+done
+exit 0
+End of whos.sh
+fi

@@ -1,0 +1,10 @@
+#!/bin/bash
+function count_code_lines()
+{
+	count=0
+	if [ $# -ne 1 ] ;then
+	echo "Usage : count_code_lines [file] "
+	n=$(cat $file | wc -l)
+	return n
+}
+

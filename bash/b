@@ -1,0 +1,16 @@
+# to unbundle ,bash this file
+if [ $# -eq 0 -o "$1" = f1 ] ;then
+echo f1 1>&2
+cat > f1 <<'End of f1'
+this is a file
+it contains 2 lines
+End of f1
+fi
+if [ $# -eq 0 -o "$1" = f2 ] ;then
+echo f2 1>&2
+cat > f2 <<'End of f2'
+this is a file 
+it contains 
+three lines
+End of f2
+fi
